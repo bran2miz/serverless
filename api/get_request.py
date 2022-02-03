@@ -11,7 +11,7 @@ class handler(BaseHTTPRequestHandler):
     dic = dict(query_string_list)
 
     if "post code" in dic:
-        url = 'https://api.zippopotam.us/us/'
+        url = 'https://api.zippopotam.us/'
         r = requests.get(url + dic['zip'])
         data = r.json()
         postal_code = []
