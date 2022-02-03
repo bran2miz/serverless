@@ -10,9 +10,9 @@ class handler(BaseHTTPRequestHandler):
     query_string_list = parse.parse_qsl(url_components.query)
     dic = dict(query_string_list)
 
-    if "post_code" in dic:
+    if "zip" in dic:
         url = 'http://api.zippopotam.us/us/'
-        r = requests.get(url + dic['post_code'])
+        r = requests.get(url + dic['zip'])
         data = r.json()
         postal_code = []
         for zip_code_data in data:
