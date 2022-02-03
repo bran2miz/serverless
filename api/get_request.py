@@ -10,16 +10,24 @@ class handler(BaseHTTPRequestHandler):
     query_string_list = parse.parse_qsl(url_components.query)
     dic = dict(query_string_list)
 
-    url = 'https://api.zippopotam.us/'
-    r = requests.get(url + dic['post code'])
+
+    
+    url = 'https://api.zippopotam.us/us/'
+    print(dic)
+    r = requests.get(url + dic['post_code'])
+    
     data = r.json()
-    postal_code = []      
-    message = f"State: {data['places'][0]['state']} City: {data['places'][0]['place name']}"
+
+    print(data)
+ 
+    message = f"State: {data['places'][0]['state']} City: {data['places'][0]['place name']}"       
     print(message)
+
+
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
 
-    self.wfile.write(message.encode())
+    # self.wfile.write(message.encode())
 
     return
