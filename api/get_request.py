@@ -13,13 +13,9 @@ class handler(BaseHTTPRequestHandler):
     url = 'https://api.zippopotam.us/'
     r = requests.get(url + dic['post code'])
     data = r.json()
-    postal_code = []
-    for zip_data in data:
-      place_info = zip_data["places"][0]["place name"]
-      postal_code.append(place_info)
-        # message = str(postal_code)        
-        # message = "Please give me a postal code to find"
-
+    postal_code = []      
+    message = f"State: {data['places'][0]['state']} City: {data['places'][0]['place name']}"
+    print(message)
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
