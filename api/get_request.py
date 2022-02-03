@@ -15,8 +15,8 @@ class handler(BaseHTTPRequestHandler):
         r = requests.get(url + dic['zip'])
         data = r.json()
         postal_code = []
-        for zip_code_data in data:
-            zip_code_location = zip_code_data["places"][0]["place name"]
+        for zip_code in data:
+            zip_code_location = zip_code["places"][0]["place name"]
             postal_code.append(zip_code_location)
         message = str(postal_code)        
     else:
