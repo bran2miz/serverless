@@ -16,7 +16,7 @@ class handler(BaseHTTPRequestHandler):
         data = r.json()
         postal_code = []
         for zip_data in data:
-            place_info = zip_data["places"][0]["place name"]
+            place_info = zip_data["country"]["post code"]
             postal_code.append(place_info)
         message = str(postal_code)        
     else:
