@@ -10,17 +10,17 @@ class handler(BaseHTTPRequestHandler):
     query_string_list = parse.parse_qsl(url_components.query)
     dic = dict(query_string_list)
 
-    if "zip" in dic:
-        url = 'http://api.zippopotam.us/us/'
+    if "post code" in dic:
+        url = 'https://api.zippopotam.us/us/'
         r = requests.get(url + dic['zip'])
         data = r.json()
         postal_code = []
-        for zip_code in data:
-            zip_code_location = zip_code["places"][0]["place name"]
-            postal_code.append(zip_code_location)
+        for zip_data in data:
+            place_info = zip_data["places"][0]
+            postal_code.append(place_info)
         message = str(postal_code)        
     else:
-        message = "Please enter a postal code to find"
+        message = "Please give me a postal code to find"
 
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
