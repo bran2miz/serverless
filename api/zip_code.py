@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
 
     print(data)
  
-    message = f"The state you are looking for is: {data['places'][0]['state']} and the desired city post code is {data['places'][0]['place name']}"       
+    message = f"The state you are looking for is {data['places'][0]['state']} and the desired city is {data['places'][0]['place name']}"       
     print(message)
 
 
