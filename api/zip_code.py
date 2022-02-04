@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
     url_components = parse.urlsplit(url_path)
     query_string_list = parse.parse_qsl(url_components.query)
     dic = dict(query_string_list)
-    
+
     url = 'https://api.zippopotam.us/us/'
     print(dic)
     r = requests.get(url + dic['post_code'])
@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
 
     print(data)
  
-    message = f"State: {data['places'][0]['state']} City: {data['places'][0]['place name']}"       
+    message = f"The state you are looking for is: {data['places'][0]['state']} and the desired city post code is {data['places'][0]['place name']}"       
     print(message)
 
 
