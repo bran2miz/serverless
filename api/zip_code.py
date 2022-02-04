@@ -9,8 +9,6 @@ class handler(BaseHTTPRequestHandler):
     url_components = parse.urlsplit(url_path)
     query_string_list = parse.parse_qsl(url_components.query)
     dic = dict(query_string_list)
-
-
     
     url = 'https://api.zippopotam.us/us/'
     print(dic)
@@ -28,6 +26,6 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
 
-    # self.wfile.write(message.encode())
+    self.wfile.write(message.encode())
 
     return
